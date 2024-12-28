@@ -1,0 +1,107 @@
+.job-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    justify-content: center;
+
+  }
+  .job-header{
+    color: aliceblue;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px;
+
+  }
+  .job-card {
+    width: 330px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    background-color: #fff;
+    transition: transform 0.2s;
+
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .job-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .company-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .company-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .job-location {
+    margin: 0;
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .job-title {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  .job-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  
+  .job-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .job-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .details-btn {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .save-btn[disabled] {
+    padding: 8px 12px;
+    border: none;
+    background-color: #24242528;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .details-btn:hover, .save-btn:hover {
+    opacity: 0.9;
+  }
+  

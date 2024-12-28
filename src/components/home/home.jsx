@@ -1,22 +1,43 @@
-import React from "react";
-import NavbarComp from "../hiringPartner/navbar";
-import PostButton from "../hiringPartner/main";
-import SidebarComp from "../hiringPartner/sidebar"
-// import JobPostingForm from "../hiringPartner/jobposting";
+import React, { useState } from "react";
+import NavbarComp from "../hiringPartner/dashborad/navbar";
+import PostButton from "../hiringPartner/jobposting/postButton";
+import MainComp from "../hiringPartner/dashborad/main";
+import JobData from "../hiringPartner/jobposting/jobcard";
+import "./home.css";
 
 const HomePage = () => {
+  const [filter, setFilter] = useState("");
+  const [showJobs, setShowJobs] = useState(false);
+
+  const filterJobs = (role) => {
+    setFilter(role);
+    setShowJobs(true);
+  };
+
   return (
-    <div style={{width:"100vw",height:"100vh" }}>
-      <div style={{}}>
-        <NavbarComp/>
+    <div className="home-page">
+      <div>
+        <NavbarComp />
       </div>
-      <div style={{display:"flex", height:"95%"}}>
-        {/* <SidebarComp/> */}
-        <PostButton/>
+      <div className="mainPage">
+        <PostButton />
+        <MainComp />
       </div>
-      
+      <div className="jobDisplaying-Container">
+        <div className="button-container">
+          <button onClick={() => filterJobs("")}>All</button>
+          <button onClick={() => filterJobs("front-end")}>Front-End</button>
+          <button onClick={() => filterJobs("backend")}>Back-End</button>
+          <button onClick={() => filterJobs("devops")}>DevOps</button>
+          <button onClick={() => filterJobs("business")}>Business</button>
+        </div>
+        <div className="jobdata-container">
+          {showJobs ? <JobData value={filter} /> : <h3 style={{color:"white", padding:"20px"}}>Select a React Jobs</h3>}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default HomePage;
+

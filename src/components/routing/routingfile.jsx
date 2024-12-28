@@ -1,12 +1,13 @@
 import React from 'react'
 import { BrowserRouter , Routes, Route } from "react-router-dom";
 import LandingPage from '../home/landingpage';
-import HiringPartnerSignup from "../hiringPartner/hiringptnrsignup"
+import HiringPartnerSignup from '../hiringPartner/signup/hiringptnrsignup';
 import JobSeekerSignup from "../jobseeker/signupjobseeker";
-import LoginPage from "../hiringPartner/loginhiringptnr";
-import HomePage from "../home/home";
+import LoginPage from '../hiringPartner/login/loginhiringptnr';
+import HomePage from "../home/home"
 import JobSeekerLoginPage from "../jobseeker/jobseekerlogin";
-import JobPostingForm from '../hiringPartner/jobposting';
+import JobPostingForm from '../hiringPartner/jobposting/jobposting';
+import JobDetails from '../hiringPartner/jobposting/jobdetails';
 
 export default function StartRouting() {
     
@@ -22,6 +23,7 @@ export default function StartRouting() {
         <Route path="/job-seeker/login" element={<JobSeekerLoginPage/>}/>
         <Route path="/home" element={<HomePage />} />
         <Route path="/home/jobposting" element={<JobPostingForm />} />
+        <Route path="/hiringpartner/home/jobdetails/:id" element={<JobDetails/>} />
         
       </Routes>
     </BrowserRouter>

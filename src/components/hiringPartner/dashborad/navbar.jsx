@@ -106,7 +106,7 @@ export default function NavbarComp() {
         {/* Avatar and Menu */}
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p:  1.8}}>
               <Avatar
                 style={{ backgroundColor: "orange", cursor: "pointer" }}
               ></Avatar>

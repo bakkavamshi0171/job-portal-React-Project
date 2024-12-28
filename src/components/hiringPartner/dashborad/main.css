@@ -1,0 +1,48 @@
+/* MainComp.css */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .progress-section,
+  .chart-section {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .progress-section h2,
+  .chart-section h2 {
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .buttons-container {
+   display: block;
+    margin-top: 20px;
+  }
+  
+  button {
+    background: #1890ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #1077e0;
+  }
+  
+  .filter-jobs-section {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+  }
+  

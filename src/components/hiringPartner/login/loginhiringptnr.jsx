@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { app } from "../../firebase/firebaseconfig";
+import { app } from "../../../firebase/firebaseconfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Box, TextField, Button, Typography, Paper } from "@mui/material";
 

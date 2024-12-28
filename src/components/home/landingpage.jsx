@@ -106,6 +106,7 @@ const LandingPage = () => {
               alignItems: "center",
               padding: 2,
               color: "#ffffff",
+              width:"200px",
               backgroundColor: "rgba(25, 118, 210, 0.8)",
               "&:hover": {
                 backgroundColor: "#ffffff",
@@ -125,6 +126,7 @@ const LandingPage = () => {
               alignItems: "center",
               padding: 2,
               color: "#ffffff",
+              width:"200px",
               backgroundColor: "rgba(25, 118, 210, 0.8)",
               "&:hover": {
                 backgroundColor: "#ffffff",

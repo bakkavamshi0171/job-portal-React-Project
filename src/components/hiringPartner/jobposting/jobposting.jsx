@@ -3,7 +3,7 @@ import axios from "axios";
 import { styled } from "@mui/system";
 
 const FormContainer = styled("div")({
-  maxWidth: "600px",
+  maxWidth: "700px",
   margin: "auto",
   padding: "20px",
   boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
@@ -118,13 +118,16 @@ export default function JobPostingForm() {
       )
       .then(() => {
         alert("Successfully job posted");
+        
       })
       .catch((error) => {
         console.error("Error posting job:", error);
       });
+      
   };
 
   return (
+    <div style={{backgroundColor:"rgb(2, 73, 108)", padding:"40px"}}>
     <FormContainer>
       <Title>Job Posting Form</Title>
       <form onSubmit={handleSubmit}>
@@ -218,6 +221,7 @@ export default function JobPostingForm() {
         </div>
       </form>
     </FormContainer>
+  </div>
   );
 }
 

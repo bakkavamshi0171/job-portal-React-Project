@@ -6,13 +6,16 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import MailIcon from "@mui/icons-material/Mail";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+
+
 export default function SidebarComp() {
-  const navigate = useNavigate();
+  
+  const navigate = useNavigate(); 
 
   const handleNavigation = (route) => {
     navigate(route);
   };
-
+  
   const menuItems = [
     { text: "Profile", icon: <PersonIcon />, route: "/profile" },
     { text: "Applicant Profiles", icon: <WorkIcon />, route: "/applied" },

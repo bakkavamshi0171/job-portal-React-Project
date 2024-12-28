@@ -1,8 +1,6 @@
-
-
 import React, { useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
-import { app } from "../../firebase/firebaseconfig";
+import { app } from "../../../firebase/firebaseconfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button, Typography, Paper, Link } from "@mui/material";
