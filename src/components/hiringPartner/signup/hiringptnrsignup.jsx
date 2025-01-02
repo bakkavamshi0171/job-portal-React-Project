@@ -44,15 +44,20 @@ const HiringPartnerSignup = () => {
           mobileNumber,
           company,
           role,
+          password,
         });
 
         navigate("/hiringpartner/login");
       }
     } catch (error) {
       console.error("Error during signup:", error.message);
-      alert("Signup failed! Please try again.");
-    }
-  };
+      if (error.code === "auth/email-already-in-use") {
+         alert("This email is already registered. Please use a different email or login.");
+      } else {
+         alert("Signup failed! Please try again.");
+      }
+    };
+  }
 
   return (
     // box meaning is div

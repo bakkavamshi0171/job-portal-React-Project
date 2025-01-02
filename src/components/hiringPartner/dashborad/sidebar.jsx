@@ -17,7 +17,7 @@ export default function SidebarComp() {
   };
   
   const menuItems = [
-    { text: "Profile", icon: <PersonIcon />, route: "/profile" },
+    { text: "Profile", icon: <PersonIcon />, route: "/hiringpartner/home/profile" },
     { text: "Applicant Profiles", icon: <WorkIcon />, route: "/applied" },
     { text: "Posted Jobs", icon: <PostAddIcon />, route: "/posted-jobs" },
     { text: "Inbox", icon: <MailIcon />, route: "/inbox" },

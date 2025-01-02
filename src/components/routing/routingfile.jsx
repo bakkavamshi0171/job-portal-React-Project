@@ -8,6 +8,8 @@ import HomePage from "../home/home"
 import JobSeekerLoginPage from "../jobseeker/jobseekerlogin";
 import JobPostingForm from '../hiringPartner/jobposting/jobposting';
 import JobDetails from '../hiringPartner/jobposting/jobdetails';
+import SearchingComp from '../hiringPartner/dashborad/search';
+import ProfilePage from '../hiringPartner/proflie/profliocomp';
 
 export default function StartRouting() {
     
@@ -24,6 +26,8 @@ export default function StartRouting() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/home/jobposting" element={<JobPostingForm />} />
         <Route path="/hiringpartner/home/jobdetails/:id" element={<JobDetails/>} />
+        <Route path="/hiringpartner/home/jobdetails/serach" element={<SearchingComp/>} />
+        <Route path="/hiringpartner/home/profile" element={<ProfilePage/>} />
         
       </Routes>
     </BrowserRouter>

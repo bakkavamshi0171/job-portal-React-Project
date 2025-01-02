@@ -17,7 +17,6 @@ const JobDetails = () => {
         const dataUrl = "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobpostingData.json";
         const response = await axios.get(dataUrl);
         setJob(response.data[id]);
-        
       } catch (error) {
         console.error("Error fetching job details:", error);
       }
@@ -30,7 +29,7 @@ const JobDetails = () => {
   }
 
   if (!job) {
-    return <p>Loading job details...</p>;
+    return <p style={{marginTop:"50px", color:"blue", fontSize:"xx-large",textAlign:"center"}}>Loading job details...</p>;
   }
 
   return (
