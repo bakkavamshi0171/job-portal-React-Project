@@ -57,7 +57,7 @@ export default function JobData({ value }) {
             <h2 className="job-title">{job.jobTitle}</h2>
             <p className="job-description">{job.description}</p>
             <div className="job-tags">
-              <span className="tag">{job.positions} positions</span>
+              <span className="tag">Post Date: {job.postDate} </span>
               <span className="tag">Full Time</span>
               <span className="tag">{job.salary} LPA</span>
             </div>
@@ -75,7 +75,7 @@ export default function JobData({ value }) {
           </div>
         ))
       ) : (
-        <p style={{ color: "white", fontSize: "large" }}>
+        <p style={{ color: "black", fontSize: "large" }}>
           No jobs found for the selected filter.
         </p>
       )}

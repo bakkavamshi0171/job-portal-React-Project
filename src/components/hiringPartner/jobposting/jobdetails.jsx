@@ -4,6 +4,8 @@ import axios from "axios";
 import "./jobDetails.css";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import NavbarComp from "../dashborad/navbar";
+import FooterComp from "../dashborad/footer";
 
 
 const JobDetails = () => {
@@ -33,6 +35,8 @@ const JobDetails = () => {
   }
 
   return (
+    <>
+    <NavbarComp/>
     <div className="job-details-overlay">
       <div className="job-details-container">
         <h1 className="job-title">{job.jobTitle}</h1>
@@ -62,11 +66,13 @@ const JobDetails = () => {
         <div className="alert-message">
           {alert ? <Alert severity="warning">
         <AlertTitle>Warning</AlertTitle>
-        This is a warning Alert Hiring Partner Can't apply
+        This is a warning  Alert Hiring Partner Can't apply
       </Alert> : " "}
         </div>
       </div>
     </div>
+    <FooterComp/>
+    </>
   );
 };
 

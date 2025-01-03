@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import HomeIcon from "@mui/icons-material/Home";
 import WorkIcon from "@mui/icons-material/Work";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import MailIcon from "@mui/icons-material/Mail";
 import LogoutIcon from "@mui/icons-material/Logout";
-
-
 
 export default function SidebarComp() {
   
@@ -17,6 +16,7 @@ export default function SidebarComp() {
   };
   
   const menuItems = [
+    { text: "Home", icon: <HomeIcon />, route: "/home" },
     { text: "Profile", icon: <PersonIcon />, route: "/hiringpartner/home/profile" },
     { text: "Applicant Profiles", icon: <WorkIcon />, route: "/applied" },
     { text: "Posted Jobs", icon: <PostAddIcon />, route: "/posted-jobs" },
@@ -85,7 +85,7 @@ export default function SidebarComp() {
           onMouseOver={(e) => (e.target.style.backgroundColor = "#e60000")}
           onMouseOut={(e) => (e.target.style.backgroundColor = "#ff4d4d")}
         >
-          <LogoutIcon style={{ marginRight: "10px" }}  />
+          <LogoutIcon style={{ marginRight: "10px" }} />
           Logout
         </button>
       </div>

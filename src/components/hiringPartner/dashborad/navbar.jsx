@@ -102,7 +102,7 @@ export default function NavbarComp() {
             <button
               onClick={handlerSerach}
               style={{
-                border: "0.5px solid",
+                border: "none",
                 background: "none",
                 cursor: "pointer",
                 padding: "5px",
