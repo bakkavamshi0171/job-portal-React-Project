@@ -40,7 +40,7 @@ const LoginPage = () => {
         const response = await axios.get(dataUrl);
 
         const userProfile = Object.values(response.data).find(
-          profile=>  profile.email === credentials.email
+          profile =>  profile.email === credentials.email
         );
 
         if (userProfile) {

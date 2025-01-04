@@ -6,12 +6,13 @@ export default function FooterComp() {
   return (
     <Box
       sx={{
-        backgroundColor: "rgb(25, 118, 210);",
+        backgroundColor: "#1976d2",
         color: "white",
-        padding: "20px",
+        padding: "40px 20px",
         textAlign: "center",
       }}
     >
+      {/* Footer Content */}
       <Box
         sx={{
           display: "flex",
@@ -20,41 +21,35 @@ export default function FooterComp() {
           alignItems: "center",
           maxWidth: "1200px",
           margin: "0 auto",
-          gap: 3,
+          gap: 4,
         }}
       >
         {/* Logo and Description */}
-        <Box>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
+          <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: "10px" }}>
             Job Portal
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ maxWidth: "300px", margin: "0 auto" }}>
             Your gateway to finding the best jobs in the industry.
           </Typography>
         </Box>
 
         {/* Quick Links */}
-        <Box>
+        <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: "10px" }}>
             Quick Links
           </Typography>
           <Box>
-            <Link href="/about" color="inherit" underline="hover">
+            <Link href="/about" color="inherit" underline="hover" sx={{ display: "block", marginBottom: "5px" }}>
               About Us
             </Link>
-          </Box>
-          <Box>
-            <Link href="/contact" color="inherit" underline="hover">
+            <Link href="/contact" color="inherit" underline="hover" sx={{ display: "block", marginBottom: "5px" }}>
               Contact Us
             </Link>
-          </Box>
-          <Box>
-            <Link href="/privacy" color="inherit" underline="hover">
+            <Link href="/privacy" color="inherit" underline="hover" sx={{ display: "block", marginBottom: "5px" }}>
               Privacy Policy
             </Link>
-          </Box>
-          <Box>
-            <Link href="/terms" color="inherit" underline="hover">
+            <Link href="/terms" color="inherit" underline="hover" sx={{ display: "block", marginBottom: "5px" }}>
               Terms of Service
             </Link>
           </Box>
@@ -65,13 +60,17 @@ export default function FooterComp() {
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: "10px" }}>
             Follow Us
           </Typography>
-          <Box>
+          <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" }, gap: 2 }}>
             <IconButton
               component="a"
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
-              sx={{ color: "white" }}
+              sx={{
+                color: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
+              }}
             >
               <Facebook />
             </IconButton>
@@ -80,7 +79,11 @@ export default function FooterComp() {
               href="https://twitter.com"
               target="_blank"
               rel="noreferrer"
-              sx={{ color: "white" }}
+              sx={{
+                color: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
+              }}
             >
               <Twitter />
             </IconButton>
@@ -89,7 +92,11 @@ export default function FooterComp() {
               href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
-              sx={{ color: "white" }}
+              sx={{
+                color: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
+              }}
             >
               <LinkedIn />
             </IconButton>
@@ -98,7 +105,11 @@ export default function FooterComp() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              sx={{ color: "white" }}
+              sx={{
+                color: "white",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.2)" },
+              }}
             >
               <Instagram />
             </IconButton>
@@ -107,7 +118,13 @@ export default function FooterComp() {
       </Box>
 
       {/* Footer Bottom */}
-      <Box sx={{ marginTop: "20px", borderTop: "1px solid rgba(255, 255, 255, 0.2)", paddingTop: "10px" }}>
+      <Box
+        sx={{
+          marginTop: "30px",
+          borderTop: "1px solid rgba(255, 255, 255, 0.2)",
+          paddingTop: "10px",
+        }}
+      >
         <Typography variant="body2">
           &copy; {new Date().getFullYear()} Job Portal. All rights reserved.
         </Typography>

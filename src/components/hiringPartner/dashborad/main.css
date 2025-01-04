@@ -1,4 +1,4 @@
-/* MainComp.css */
+/* 
 .main-container {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -45,4 +45,65 @@
     text-align: center;
     color: #888;
   }
-  
+   */
+
+   /* Main Container Styling */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Adjust grid for smaller screens */
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Progress Section Styling */
+.progress-container {
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+/* Chart Section Styling */
+.chart-container {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+/* General Text Styling */
+.section-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-text {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.progress-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Responsive Chart Styling */
+@media (max-width: 1024px) {
+  .chart-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container,
+  .chart-container {
+    padding: 10px;
+  }
+}

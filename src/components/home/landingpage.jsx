@@ -24,20 +24,17 @@ const LandingPage = () => {
       {/* Navbar */}
       <AppBar position="static" sx={{ backgroundColor: "rgb(41, 132, 222)" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          {/* Logo Section */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, padding: "0px 40px" }}>
             <WorkIcon fontSize="large" />
             <Typography variant="h6">Job Portal</Typography>
           </Box>
 
-          {/* Title Section */}
           <Typography variant="h6" sx={{ padding: "0px 40px" }}>
             Find Your Dream Job!
           </Typography>
         </Toolbar>
       </AppBar>
 
-      {/* Main Content */}
       <Box
         sx={{
           display: "flex",
@@ -45,7 +42,7 @@ const LandingPage = () => {
           alignItems: "center",
           flex: 1,
           padding: "20px",
-          flexDirection: { xs: "column", sm: "row" }, // Responsive layout
+          flexDirection: { xs: "column", sm: "row" }, 
         }}
       >
         <Box
@@ -70,7 +67,7 @@ const LandingPage = () => {
             sx={{
               color: "#ffffff",
               textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-              textAlign: { xs: "center", sm: "left" }, // Responsive text alignment
+              textAlign: { xs: "center", sm: "left" },
             }}
           >
             Welcome to Job Portal
@@ -81,7 +78,7 @@ const LandingPage = () => {
             sx={{
               color: "#ffffff",
               textShadow: "1px 1px 3px rgba(0, 0, 0, 0.5)",
-              textAlign: { xs: "center", sm: "left" }, // Responsive text alignment
+              textAlign: { xs: "center", sm: "left" },
             }}
           >
             Find your dream job or hire top talent!
@@ -93,8 +90,8 @@ const LandingPage = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: 2, // Spacing between buttons
-            alignItems: { xs: "center", sm: "flex-start" }, // Responsive button alignment
+            gap: 2,
+            alignItems: { xs: "center", sm: "flex-start" }, 
           }}
         >
           <Button

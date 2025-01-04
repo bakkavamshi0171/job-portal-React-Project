@@ -374,7 +374,7 @@ export default function JobPostingForm() {
           jobType: "",
           skills: "",
           postDate: "",
-          postedBy: formData.postedBy, // Retain the postedBy field
+          postedBy: formData.postedBy, 
         });
       })
       .catch((error) => {

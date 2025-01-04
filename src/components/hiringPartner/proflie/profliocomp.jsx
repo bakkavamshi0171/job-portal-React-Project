@@ -73,6 +73,7 @@ function ProfilePage() {
   return (
     <>
     <NavbarComp/>
+    <div className="profile-body">
     <div className="profile-page">
       <div className="profile-header">
         <h2>Profile Page</h2>
@@ -161,6 +162,7 @@ function ProfilePage() {
         </form>
       </div>
     </div>
+  </div>
     <FooterComp/>
     </>
   );

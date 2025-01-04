@@ -32,7 +32,8 @@ export default function NavbarComp() {
     navigate("/hiringpartner/login");
   };
 
-  const handlerSerach = () => {
+  const handlerSerach = (e) => {
+    e.preventDefault();
     const searchValue = data.current.value;
     navigate("/hiringpartner/home/jobdetails/serach", { state: searchValue });
   };
@@ -76,6 +77,7 @@ export default function NavbarComp() {
 
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           {/* Search Bar */}
+          <form onSubmit={handlerSerach}>
           <div
             style={{
               display: "flex",
@@ -86,7 +88,7 @@ export default function NavbarComp() {
               boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
               width: "300px",
             }}
-          >
+            >
             <input
               ref={data}
               type="text"
@@ -111,6 +113,7 @@ export default function NavbarComp() {
               <SearchIcon style={{ color: "#1976d2" }} />
             </button>
           </div>
+          </form>
 
           {/* Avatar and Menu */}
           <Box sx={{ flexGrow: 0 }}>
