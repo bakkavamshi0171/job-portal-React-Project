@@ -13,7 +13,7 @@ export default function PostButton() {
         variant="contained"
         color="primary"
          onClick={handlePost}
-        style={{ width: "100%", padding: "10px", fontSize: "20px" }}>
+        style={{ width: "230px", padding: "10px", fontSize: "20px" }}>
         Post a Job
       </Button>
     </div>

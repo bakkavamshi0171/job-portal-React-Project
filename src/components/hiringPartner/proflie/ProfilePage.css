@@ -78,4 +78,9 @@
   .save-btn:hover {
     background-color: #0056b3;
   }
-  
+  @media (min-width:300px) and (max-width:768px) {
+    .profile-container{
+      display: block;
+      height: fit-content;
+    }
+  }

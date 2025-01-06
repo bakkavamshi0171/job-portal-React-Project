@@ -11,6 +11,7 @@ import JobDetails from '../hiringPartner/jobposting/jobdetails';
 import SearchingComp from '../hiringPartner/dashborad/search';
 import ProfilePage from '../hiringPartner/proflie/profliocomp';
 import PostedData from '../hiringPartner/postedJob/postedjob';
+import ApplicantsComp from '../hiringPartner/applicants/applicants';
 
 export default function StartRouting() {
     
@@ -30,8 +31,7 @@ export default function StartRouting() {
         <Route path="/hiringpartner/home/jobdetails/serach" element={<SearchingComp/>} />
         <Route path="/hiringpartner/home/profile" element={<ProfilePage/>} />
         <Route path="/hiringpartner/home/posteddata" element={<PostedData/>} />
-
-        
+        <Route path="/hiringpartner/home/applicantsdata" element={<ApplicantsComp/>} />
       </Routes>
     </BrowserRouter>
     </div>

@@ -2,19 +2,24 @@ import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { app } from "../../../firebase/firebaseconfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Box, TextField, Button, Typography, Paper } from "@mui/material";
+import { Box, TextField, Button, Typography, Paper, Alert } from "@mui/material";
 import axios from "axios";
 
 export const userDetails = createContext();
 
 const LoginPage = () => {
   const loginWithHp = getAuth(app);
+  const [loginalert, setLoginalert] = useState(false);
+  const [profile, setProfile] = useState(null);
+  const [loginmsg, setLoginmsg] = useState(false);
+  const[loginfail, setLoginFail]= useState(false);
+  const navigate = useNavigate();
+  
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
-  const [profile, setProfile] = useState(null);
-  const navigate = useNavigate();
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,30 +45,30 @@ const LoginPage = () => {
         const response = await axios.get(dataUrl);
 
         const userProfile = Object.values(response.data).find(
-          profile =>  profile.email === credentials.email
+          (profile) => profile.email === credentials.email
         );
 
         if (userProfile) {
           setProfile(userProfile);
           localStorage.setItem("userProfile", JSON.stringify(userProfile));
-          alert("Login successful!");
+          setLoginalert(true);
           navigate("/home");
         } else {
-          alert("User profile not found in the database.");
+          setLoginmsg(true);
         }
       }
     } catch (error) {
       console.error("Error during login:", error);
       if (error.code === "auth/user-not-found") {
-        alert("User not found. Please check your email or sign up.");
+        setLoginmsg(true)
       } else if (error.code === "auth/wrong-password") {
-        alert("Invalid credentials! Please check your password.");
+        setLoginFail(true)
       } else if (error.code === "auth/invalid-email") {
-        alert("Invalid email format. Please enter a valid email.");
+        setLoginFail(true)
       } else if (error.code === "auth/network-request-failed") {
         alert("Network error: Please check your internet connection.");
       } else {
-        alert("Login failed! Please try again.");
+        setLoginFail(true)
       }
     }
   };
@@ -84,7 +89,7 @@ const LoginPage = () => {
           elevation={6}
           sx={{
             padding: 4,
-            maxWidth: 400,
+            maxWidth: 500,
             width: "100%",
             textAlign: "center",
             borderRadius: 3,
@@ -135,6 +140,9 @@ const LoginPage = () => {
                 },
               }}
             />
+            {loginmsg ? (<Alert variant="outlined" severity="error">User profile not found Please go back and signup .</Alert>) : ("")}
+            {loginalert ? (<Alert variant="outlined" severity="success">Login Successfully.</Alert>) : ("")}
+            {loginfail?(<Alert variant="outlined" severity="warning">Login Failed!Check your Email or Password Correctly</Alert>) : ("") }
             <Button
               type="submit"
               variant="contained"
@@ -158,5 +166,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-

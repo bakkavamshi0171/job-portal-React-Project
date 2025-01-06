@@ -1,5 +1,5 @@
 import React from "react";
-import { useHref, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import HomeIcon from "@mui/icons-material/Home";
 import WorkIcon from "@mui/icons-material/Work";
@@ -23,7 +23,7 @@ export default function SidebarComp() {
   const menuItems = [
     { text: "Home", icon: <HomeIcon />, route: "/home" },
     { text: "Profile", icon: <PersonIcon />, route: "/hiringpartner/home/profile" },
-    { text: "Applicant Profiles", icon: <WorkIcon />, route: "/applied" },
+    { text: "Applicant Profiles", icon: <WorkIcon />, route: "/hiringpartner/home/applicantsdata" },
     { text: "Posted Jobs", icon: <PostAddIcon />, route: "/hiringpartner/home/posteddata" },
     { text: "Send Mail", icon: <MailIcon />, route :"/email" },
   ];

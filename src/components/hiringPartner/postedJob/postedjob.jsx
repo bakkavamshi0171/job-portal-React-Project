@@ -48,6 +48,7 @@ export default function PostedData() {
       return job.postedBy.toLowerCase().includes(userName.toLowerCase());
     });
   }, [jobData]);
+  console.log(filteredJobs.length)
 
   return (
     <>
