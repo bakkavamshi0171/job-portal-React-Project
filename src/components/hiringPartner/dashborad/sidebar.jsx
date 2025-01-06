@@ -32,7 +32,7 @@ export default function SidebarComp() {
     <div
       style={{
         width: "250px",
-        backgroundColor: "#333333",
+        backgroundColor: "#1976d2",
         color: "white",
         height: "100vh",
         display: "flex",

@@ -99,7 +99,7 @@ const Button = styled("button")({
 });
 
 export default function JobPostingForm() {
- const [alertmsg, setAlertMsg]=useState(false);
+  const [alertmsg, setAlertMsg] = useState(false);
   const [formData, setFormData] = useState({
     jobTitle: "",
     companyName: "",
@@ -133,7 +133,7 @@ export default function JobPostingForm() {
         { ...formData, skills: skillsArray }
       )
       .then(() => {
-        alert("Successfully job posted");
+        
         setFormData({
           jobTitle: "",
           companyName: "",
@@ -143,9 +143,9 @@ export default function JobPostingForm() {
           jobType: "",
           skills: "",
           postDate: "",
-          postedBy: formData.postedBy, 
+          postedBy: formData.postedBy,
         });
-        setAlertMsg(true)
+        setAlertMsg(true);
       })
       .catch((error) => {
         console.error("Error posting job:", error);
@@ -258,12 +258,16 @@ export default function JobPostingForm() {
             </div>
           </form>
         </FormContainer>
-        {alertmsg?<Alert variant="outlined" severity="success">
- Job Posted SuccessFully
-</Alert>:""};
+        {alertmsg ? (
+          <Alert variant="outlined" severity="success">
+            Job Posted SuccessFully
+          </Alert>
+        ) : (
+          ""
+        )}
+        ;
       </div>
       <FooterComp />
     </>
   );
 }
-
