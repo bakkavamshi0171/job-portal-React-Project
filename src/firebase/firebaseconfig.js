@@ -13,9 +13,27 @@ const firebaseConfig = {
   measurementId: "G-3KJNF2ZGBR"
 };
 
+
+// Configuration for the first Firebase app
+const firebaseConfig1 = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "https://jobseeker-application-default-rtdb.firebaseio.com", // First database URL
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
+};
+
 // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
+const app1 = initializeApp(firebaseConfig1, "app1");
+
+
 const db = getDatabase(app);
+const db1 = getDatabase(app1);
+
 const storage = getStorage(app);
 
-export {app, db, storage}
+export {app, db, storage, app1, db1}

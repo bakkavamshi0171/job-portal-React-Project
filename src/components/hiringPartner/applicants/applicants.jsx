@@ -110,7 +110,7 @@ const ApplicantsComp = () => {
   return (
     <div style={{ backgroundColor: "rgb(2, 73, 108)", width: "100%" }}>
       <NavbarComp />
-      <Box sx={{ padding: "40px", width: "80%", margin: "auto" }}>
+      <div className="box-container">
         {compared.map((job) => (
           <Card key={job.id} sx={{ marginBottom: "20px", borderRadius: "8px" }}>
             <CardContent>
@@ -173,14 +173,14 @@ const ApplicantsComp = () => {
                         <Button
                           variant="contained"
                           color="info"
-                          sx={{ marginLeft: "10px" }}
+                          sx={{ margin: "10px" }}
                           startIcon={<FaLinkedin />}
                         >
                           <a
                             href={applicant.LinkedInURL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ textDecoration: "none", color: "white" }}
+                            style={{ textDecoration: "none", color: "white"}}
                           >
                             LinkedIn
                           </a>
@@ -236,7 +236,7 @@ const ApplicantsComp = () => {
             </CardContent>
           </Card>
         ))}
-      </Box>
+      </div>
       <FooterComp />
     </div>
   );

@@ -9,6 +9,7 @@ import FooterComp from "../dashborad/footer";
 export default function PostedData() {
   const [userName, setUserName] = useState("");
   const [jobData, setJobData] = useState([]);
+  
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
@@ -45,17 +46,19 @@ export default function PostedData() {
     if (!jobData) return [];
     return Object.entries(jobData).filter(([key, job]) => {
       if (!userName) return true;
-      return job.postedBy.toLowerCase().includes(userName.toLowerCase());
+      return job.postedBy.toLowerCase().includes(userName.toLowerCase())
     });
   }, [jobData]);
-  console.log(filteredJobs.length)
+  
 
   return (
     <>
       <NavbarComp />
+      <div style={{}}>
       <div className="job-container">
         {contextHolder}
         {filteredJobs.length > 0 ? (
+
           filteredJobs.map(([key, job]) => (
             <div key={key} className="job-card">
               <div className="job-header">
@@ -88,6 +91,7 @@ export default function PostedData() {
             No jobs found for the selected filter.
           </p>
         )}
+      </div>
       </div>
       <FooterComp />
     </>

@@ -2,6 +2,13 @@
 .css-zhkk7h{
     width:90%
 }
-.css-1abvrni-MuiButtonBase-root-MuiButton-root{
-    
+.box-container{
+    width:60%;
+    margin: auto;
+    padding: 20px
+}
+@media (min-width:300px) and (max-width:468px){
+    .box-container{
+        width:100%
+    }
 }
