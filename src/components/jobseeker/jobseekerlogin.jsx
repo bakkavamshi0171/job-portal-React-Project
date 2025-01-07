@@ -64,7 +64,7 @@ const LoginPage = () => {
         elevation={6}
         sx={{
           padding: 4,
-          maxWidth: 400,
+          maxWidth:500,
           width: "100%",
           textAlign: "center",
           borderRadius: 3,

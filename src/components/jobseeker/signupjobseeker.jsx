@@ -22,7 +22,7 @@ const JobSeekerSignup = () => {
   });
 
   const navigate = useNavigate();
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -73,7 +73,7 @@ const JobSeekerSignup = () => {
         elevation={6}
         sx={{
           padding: 4,
-          maxWidth: 400,
+          maxWidth: 550,
           width: "100%",
           textAlign: "center",
           borderRadius: 3,

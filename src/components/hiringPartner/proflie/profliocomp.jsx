@@ -7,6 +7,7 @@ import "./ProfilePage.css";
 import NavbarComp from "../dashborad/navbar";
 import FooterComp from "../dashborad/footer";
 
+
 function ProfilePage() {
   const storedProfile = localStorage.getItem("userProfile");
   const userContext = useContext(UserDetailsContext) || JSON.parse(storedProfile);
@@ -14,32 +15,32 @@ function ProfilePage() {
   const [userDetails, setUserDetails] = useState({
     fullName: userContext?.fullName || "",
     email: userContext?.email || "",
-    mobileNumber: userContext?.mobileNumber || "",
+    mobileNumber: userContext?.mobileNumber || "", 
     role: userContext?.role || "",
     company: userContext?.company || "",
   });
+
   const [profilePic, setProfilePic] = useState(null);
   const [previewPic, setPreviewPic] = useState(userContext?.profilePic || "");
   const [isEditing, setIsEditing] = useState(false);
-
   const userId = userContext?.id || "";
+
 
   if (!userContext && !localStorage.getItem("userProfile")) {
     return <p>Loading user data...</p>;
   }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserDetails({ ...userDetails, [name]: value });
   };
-
   const handleProfilePicChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setProfilePic(file);
-      setPreviewPic(URL.createObjectURL(file)); // Display preview immediately
+      setPreviewPic(URL.createObjectURL(file)); 
     }
   };
+
 
   const handleProfilePicUpload = async () => {
     if (profilePic) {
@@ -51,7 +52,7 @@ function ProfilePage() {
         const docRef = doc(db, "users", userId);
         await updateDoc(docRef, { profilePic: downloadURL });
 
-        setPreviewPic(downloadURL); // Update preview with Firebase URL
+        setPreviewPic(downloadURL);
       } catch (error) {
         console.error("Error uploading profile picture:", error);
       }
@@ -62,7 +63,7 @@ function ProfilePage() {
     e.preventDefault();
     try {
       const docRef = doc(db, "users", userId);
-      await updateDoc(docRef, userDetails);
+      await updateDoc(docRef, userDetails); 
       setIsEditing(false);
       await handleProfilePicUpload();
     } catch (error) {
@@ -112,6 +113,7 @@ function ProfilePage() {
               type="email"
               name="email"
               value={userDetails.email}
+              // value={persondetails.email}
               onChange={handleChange}
               disabled={!isEditing}
             />

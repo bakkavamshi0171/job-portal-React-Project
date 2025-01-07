@@ -1,14 +1,17 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState , useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { app } from "../../../firebase/firebaseconfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Box, TextField, Button, Typography, Paper, Alert } from "@mui/material";
 import axios from "axios";
+import { Logindetails } from "./personData";
 
 export const userDetails = createContext();
 
+
 const LoginPage = () => {
   const loginWithHp = getAuth(app);
+  const {setPersonDetails}= useContext(Logindetails); //usecontext from login page Details
   const [loginalert, setLoginalert] = useState(false);
   const [profile, setProfile] = useState(null);
   const [loginmsg, setLoginmsg] = useState(false);
@@ -39,7 +42,7 @@ const LoginPage = () => {
       );
 
       if (user) {
-        // Fetch user details from the database
+        
         const dataUrl =
           "https://job-portal-fdc41-default-rtdb.firebaseio.com/hiringpartner.json";
         const response = await axios.get(dataUrl);
@@ -51,6 +54,7 @@ const LoginPage = () => {
         if (userProfile) {
           setProfile(userProfile);
           localStorage.setItem("userProfile", JSON.stringify(userProfile));
+          setPersonDetails(userProfile);
           setLoginalert(true);
           navigate("/home");
         } else {
@@ -106,6 +110,11 @@ const LoginPage = () => {
           >
             Job Portal Login
           </Typography>
+
+          {loginfail?(<Alert variant="outlined" severity="warning">Login Failed!Check your Email or Password Correctly</Alert>) : ("") }
+          {loginmsg ? (<Alert variant="outlined" severity="error">User profile not found Please go back and signup .</Alert>) : ("")};
+          {loginalert ? (<Alert variant="outlined" severity="success">Login Successfully.</Alert>) : ("")}
+
           <form onSubmit={handleLogin}>
             <TextField
               fullWidth
@@ -140,9 +149,7 @@ const LoginPage = () => {
                 },
               }}
             />
-            {loginmsg ? (<Alert variant="outlined" severity="error">User profile not found Please go back and signup .</Alert>) : ("")}
-            {loginalert ? (<Alert variant="outlined" severity="success">Login Successfully.</Alert>) : ("")}
-            {loginfail?(<Alert variant="outlined" severity="warning">Login Failed!Check your Email or Password Correctly</Alert>) : ("") }
+            
             <Button
               type="submit"
               variant="contained"

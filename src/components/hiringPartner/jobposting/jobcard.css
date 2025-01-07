@@ -3,7 +3,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  height:"100%";
   padding: 20px;
   justify-content: center;
   background-color: rgb(2, 73, 108);
@@ -100,7 +99,7 @@
 }
 
 .details-btn:hover {
-  background-color: #ff8400;
+  background-color: rgb(24, 214, 24);
 }
 
 .save-btn {

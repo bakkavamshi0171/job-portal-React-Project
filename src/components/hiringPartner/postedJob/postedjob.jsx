@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { message } from "antd";
+import { message, Modal } from "antd";
 import axios from "axios";
 import "../jobposting/jobcard.css";
 import NavbarComp from "../dashborad/navbar";
@@ -9,7 +9,6 @@ import FooterComp from "../dashborad/footer";
 export default function PostedData() {
   const [userName, setUserName] = useState("");
   const [jobData, setJobData] = useState([]);
-  
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
@@ -35,10 +34,32 @@ export default function PostedData() {
     navigate(`/hiringpartner/home/jobdetails/${id}`);
   };
 
-  const warning = () => {
-    messageApi.open({
-      type: "warning",
-      content: "Hiring Partner can't apply",
+  const handleDeleteJob = async (jobKey) => {
+    try {
+      const deleteUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobpostingData/${jobKey}.json`;
+      await axios.delete(deleteUrl);
+
+      // Update the jobData state after successful deletion
+      setJobData((prevData) => {
+        const updatedData = { ...prevData };
+        delete updatedData[jobKey];
+        return updatedData;
+      });
+
+      message.success("Job deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting job:", error);
+      message.error("Failed to delete the job. Please try again.");
+    }
+  };
+
+  const confirmDelete = (jobKey) => {
+    Modal.confirm({
+      title: "Are you sure you want to delete this job?",
+      content: "This action cannot be undone.",
+      okText: "Yes, Delete",
+      cancelText: "Cancel",
+      onOk: () => handleDeleteJob(jobKey),
     });
   };
 
@@ -46,19 +67,16 @@ export default function PostedData() {
     if (!jobData) return [];
     return Object.entries(jobData).filter(([key, job]) => {
       if (!userName) return true;
-      return job.postedBy.toLowerCase().includes(userName.toLowerCase())
+      return job.postedBy.toLowerCase().includes(userName.toLowerCase());
     });
   }, [jobData]);
-  
 
   return (
     <>
       <NavbarComp />
-      <div style={{}}>
       <div className="job-container">
         {contextHolder}
         {filteredJobs.length > 0 ? (
-
           filteredJobs.map(([key, job]) => (
             <div key={key} className="job-card">
               <div className="job-header">
@@ -77,11 +95,25 @@ export default function PostedData() {
               <div className="job-actions">
                 <button
                   className="details-btn"
-                  onClick={() => handleJobDetails(key)}>
+                  onClick={() => handleJobDetails(key)}
+                >
                   Details
                 </button>
-                <button className="save-btn" onClick={warning}>
-                  Apply
+                <button
+                  style={{
+                    color: "white",
+                    backgroundColor: "red",
+                    padding: "10px 16px",
+                    border: "none",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    transition: "backgroundColor 0.3s, color 0.3s",
+                  }}
+                  onClick={() => confirmDelete(key)}
+                >
+                  Delete Job
                 </button>
               </div>
             </div>
@@ -91,7 +123,6 @@ export default function PostedData() {
             No jobs found for the selected filter.
           </p>
         )}
-      </div>
       </div>
       <FooterComp />
     </>

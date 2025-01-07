@@ -229,8 +229,9 @@ const ApplicantsComp = () => {
                   </Card>
                 ))
               ) : (
-                <Typography variant="body2">
+                <Typography variant="body2" style={{color:"white"}}>
                   No applicants for this job yet.
+                  {console.log("no applicants")}
                 </Typography>
               )}
             </CardContent>

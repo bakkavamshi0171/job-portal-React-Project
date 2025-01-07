@@ -256,9 +256,7 @@ export default function JobPostingForm() {
             <div style={{ textAlign: "center" }}>
               <Button type="submit">Post Job</Button>
             </div>
-          </form>
-        </FormContainer>
-        {alertmsg ? (
+            {alertmsg ? (
           <Alert variant="outlined" severity="success">
             Job Posted SuccessFully
           </Alert>
@@ -266,6 +264,9 @@ export default function JobPostingForm() {
           ""
         )}
         ;
+          </form>
+        </FormContainer>
+        
       </div>
       <FooterComp />
     </>
