@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "../home/landingpage";
 import HiringPartnerSignup from "../hiringPartner/signup/hiringptnrsignup";
-import JobSeekerSignup from "../jobseeker/signupjobseeker";
+import JobSeekerSignup from "../jobseeker/jb_signup/signupjobseeker";
 import LoginPage from "../hiringPartner/login/loginhiringptnr";
 import HomePage from "../home/home";
-import JobSeekerLoginPage from "../jobseeker/jobseekerlogin";
+import JobSeekerLogin from "../jobseeker/jb_login/jobseekerlogin";
 import JobPostingForm from "../hiringPartner/jobposting/jobposting";
 import JobDetails from "../hiringPartner/jobposting/jobdetails";
 import SearchingComp from "../hiringPartner/dashborad/search";
@@ -30,7 +30,7 @@ export default function StartRouting() {
             />
             <Route path="/job-seeker/signup" element={<JobSeekerSignup />} />
             <Route path="/hiringpartner/login" element={<LoginPage />} />
-            <Route path="/job-seeker/login" element={<JobSeekerLoginPage />} />
+            <Route path="/job-seeker/login" element={<JobSeekerLogin />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/home/jobposting" element={<JobPostingForm />} />
             <Route

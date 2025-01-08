@@ -81,7 +81,7 @@ function ProfilePage() {
       </div>
 
       <div className="profile-container">
-        {/* Profile Sidebar */}
+        
         <div className="profile-sidebar">
           <img
             src={previewPic || "https://via.placeholder.com/150"}
@@ -95,7 +95,7 @@ function ProfilePage() {
           />
         </div>
 
-        {/* Profile Form */}
+        
         <form className="profile-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name:</label>
@@ -113,7 +113,6 @@ function ProfilePage() {
               type="email"
               name="email"
               value={userDetails.email}
-              // value={persondetails.email}
               onChange={handleChange}
               disabled={!isEditing}
             />

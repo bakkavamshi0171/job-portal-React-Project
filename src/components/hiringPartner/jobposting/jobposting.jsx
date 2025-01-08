@@ -3,7 +3,7 @@ import axios from "axios";
 import { styled } from "@mui/system";
 import NavbarComp from "../dashborad/navbar";
 import FooterComp from "../dashborad/footer";
-import { Alert } from "@mui/material";
+import { Alert, AlertTitle } from "@mui/material";
 
 const FormContainer = styled("div")(({ theme }) => ({
   maxWidth: "700px",
@@ -133,7 +133,6 @@ export default function JobPostingForm() {
         { ...formData, skills: skillsArray }
       )
       .then(() => {
-        
         setFormData({
           jobTitle: "",
           companyName: "",
@@ -253,20 +252,19 @@ export default function JobPostingForm() {
                 disabled
               />
             </div>
+            {alertmsg ? (
+              <Alert severity="success">
+                <AlertTitle>Job Posted SuccessFully</AlertTitle>
+              </Alert>
+            ) : (
+              ""
+            )}
+            ;
             <div style={{ textAlign: "center" }}>
               <Button type="submit">Post Job</Button>
             </div>
-            {alertmsg ? (
-          <Alert variant="outlined" severity="success">
-            Job Posted SuccessFully
-          </Alert>
-        ) : (
-          ""
-        )}
-        ;
           </form>
         </FormContainer>
-        
       </div>
       <FooterComp />
     </>

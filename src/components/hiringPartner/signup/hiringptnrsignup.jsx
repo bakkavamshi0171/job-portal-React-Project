@@ -169,7 +169,9 @@ const HiringPartnerSignup = () => {
             ""
           )}
           {alertmsg ? (
-            <Alert severity="error" variant="filled">Signup failed! Please try again.</Alert>
+            <Alert severity="error" variant="filled">
+              Signup failed! Please try again.
+            </Alert>
           ) : (
             ""
           )}
