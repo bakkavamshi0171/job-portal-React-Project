@@ -1,0 +1,172 @@
+.posts {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+    justify-content:center;
+    gap: 20px; /* Spacing between cards */
+  }
+
+  .jobPosts {
+    /* border: 1px solid #e0e0e0; */
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%; /* 3 cards in a row */
+    box-sizing: border-box;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animation for card hover */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .jobPosts:hover {
+    transform: translateY(-5px); /* Slightly move the card upwards */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Add shadow on hover */
+  }
+  
+  .jobPosts h4,
+  .jobPosts h2,
+  .jobPosts p {
+    margin: 8px 0;
+    color: #333;
+  }
+  
+  .jobPosts h2 {
+    font-size: 20px;
+    font-weight: bold; /* Bold text for job title */
+    color: #007bff; /* Blue color for job title */
+  }
+  
+  .jobPosts h4 {
+    font-size: 16px;
+    font-weight: bold; /* Bold text for company name */
+  }
+  
+  .jobPosts p {
+    font-size: 14px;
+    line-height: 1.5; /* Improved line spacing for readability */
+  }
+  
+  /* Bold labels */
+  .jobPosts p span {
+    font-weight: bold;
+  }
+  
+  /* Skills section styling */
+  .skills-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Light grey background */
+    margin: 10px 0;
+    box-shadow: 0px 2px 4px rgba(114, 10, 10, 0.05);
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 8px; /* Rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Button animation */
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  .btnapply{
+    border-radius: 8px;
+  }
+  button:hover {
+    background-color:rgba(10, 10, 10, 0.87);
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  
+  }
+  
+  /* Search container styles */
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content */
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .search-inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center align the inputs */
+    gap: 10px;
+  }
+  
+  .search-buttons {
+    display: flex;
+    justify-content: center; /* Center align the buttons */
+    gap: 10px;
+    border-radius: 8px;
+  }
+  
+  .search-buttons button{
+    border-radius: 8px;
+  }
+
+  .search-bar {
+    border-radius: 10px;
+    border-color: blue;
+    min-width: 150px;
+    padding:5px
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .jobPosts {
+      width: 46%; /* 2 cards per row on smaller screens */
+    }
+    .search-bar {
+      border-radius: 10px;
+      border-color: blue;
+      min-width: 10px;
+      max-width:100px;
+      padding:10px
+    }
+  }
+  
+  @media (max-width: 430px) {
+    .jobPosts {
+      width: 100%; /* 1 card per row on very small screens */
+    }
+    .search-inputs {
+      display: flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      /* Center align the inputs */
+  
+      gap: 10px;
+    }
+    .search-bar {
+      border-radius: 10px;
+      border-color: blue;
+      min-width: 10px;
+      max-width:90px;
+      padding:10px
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .jobPosts {
+      width: 100%; /* 1 card per row on very small screens */
+    }
+    .search-inputs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap;
+      align-items: center; /* Center align the inputs */
+  
+      gap: 10px;
+    }
+    .search-bar {
+      border-radius: 10px;
+      border-color: blue;
+      min-width: 10px;
+      max-width:10000px;
+      padding:10px
+    }
+  }

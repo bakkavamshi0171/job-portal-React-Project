@@ -1,0 +1,16 @@
+/* src/content/Content.css */
+.content {
+  display: grid;
+  grid-template-cols: 20% 80%; /* CardCarousal 20%, JobPosts 80% */
+  height: 100%; /* Ensures it fills the height of the parent container */
+  gap: 0px; /* Optional: Adds space between CardCarousal and JobPosts */
+  box-sizing: border-box; /* Includes padding in total dimensions */
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 98%;
+  }
+}
+
+

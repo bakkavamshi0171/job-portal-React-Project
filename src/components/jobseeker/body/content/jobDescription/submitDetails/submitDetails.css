@@ -1,0 +1,152 @@
+/* src/jobseekerUI/body/content/submitDetails.css */
+
+.submitDetails {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .submitDetails:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .submitDetails h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .submitDetails form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .submitDetails label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .submitDetails input[type="text"],
+  .submitDetails input[type="email"],
+  .submitDetails input[type="tel"],
+  .submitDetails input[type="file"],
+  .submitDetails input[type="radio"],
+  .submitDetails input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .submitDetails input[type="text"]:focus,
+  .submitDetails input[type="email"]:focus,
+  .submitDetails input[type="tel"]:focus,
+  .submitDetails input[type="file"]:focus,
+  .submitDetails input[type="radio"]:focus,
+  .submitDetails input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
+  .submitDetails input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .submitDetails input[type="file"] {
+    padding: 3px;
+  }
+  
+  .submitDetails .submitButton {
+    width: 40%;
+    padding: 10px;
+    background-color:rgb(8, 8, 8); /* Tomato */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    animation: bounce 0.5s ease-in-out infinite alternate;
+  }
+  
+  .submitDetails .submitButton:hover {
+    background-color:rgb(36, 34, 33); /* Darker Tomato */
+  }
+  
+  .submitDetails .goHomeButton {
+    padding: 10px 20px;
+    background-color:rgb(112, 69, 112); /* Purple */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    animation: pulse 1s infinite;
+  }
+  
+  .submitDetails .goHomeButton:hover {
+    background-color:rgb(126, 85, 155); /* Darker Purple */
+  }
+  
+  /* New CSS for the top confirmation button */
+  .topConfirmation {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 1000; /* Ensure it is on top of other elements */
+    animation: slideDown 0.5s ease;
+  }
+  
+
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  
+
+  @media(max-width:425px){
+    .submitDetails{
+      padding:20px
+    }
+  }
+
+  @media(max-width:320px){
+    .submitDetails{
+      padding:20px
+    }
+  }

@@ -31,15 +31,21 @@ const JobSeekerLogin = () => {
         credentials.email,
         credentials.password
       );
-
+  
       if (user) {
         const dataUrl =
           "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobseeker.json";
         const response = await axios.get(dataUrl);
-
+  
+        if (!response.data) {
+          setError("No data found in the database.");
+          return;
+        }
+  
         const userProfile = Object.values(response.data).find(
           (profile) => profile.email === credentials.email
         );
+  
         if (userProfile) {
           const seekers = Object.values(response.data || {});
           const validUser = seekers.find(
@@ -47,17 +53,17 @@ const JobSeekerLogin = () => {
               user.email === credentials.email &&
               user.password === credentials.password
           );
-
+  
           if (validUser) {
             const loginDetailsUrl =
               "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
             const loginResponse = await axios.get(loginDetailsUrl);
             const loginDetails = loginResponse.data;
-
+  
             if (loginDetails && Object.keys(loginDetails).length > 0) {
               const existingKey = Object.keys(loginDetails)[0];
-              const updateUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json/${existingKey}.json`;
-
+              const updateUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails/${existingKey}.json`;
+  
               await axios.put(updateUrl, {
                 email: credentials.email,
                 password: credentials.password,
@@ -68,21 +74,24 @@ const JobSeekerLogin = () => {
                 password: credentials.password,
               });
             }
-            setShowAlert(true); // Show the alert
+  
+            setShowAlert(true);
             setTimeout(() => {
-              navigate("/job-seeker/ui");
-            }, 3000);
+              navigate("/job-seeker/home");
+            }, 1000);
+          } else {
+            setError("Invalid email or password");
           }
         } else {
-          setError("Invalid email or password");
+          setError("User profile not found.");
         }
       }
     } catch (err) {
       setError("Error logging in. Please try again.");
-      console.error("Firebase submission error:", err);
+      console.error("Error during login:", err.message, err.response?.data);
     }
   };
-
+  
   return (
     <div className="container">
       <div className="formContainer">

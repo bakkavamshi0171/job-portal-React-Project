@@ -1,0 +1,15 @@
+/* src/body/Body.css */
+.body-container {
+    height: 80%;
+    box-sizing: border-box;
+    width:100vw
+  }
+  
+  .content {
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(85, 8, 8, 0.1); 
+    border-radius: 8px;
+    overflow-y: auto; /* Ensures scrolling if content overflows */
+  }
+  
+  

@@ -1,0 +1,56 @@
+/* src/jobseekerUI/body/content/jobDescription.css */
+
+.jobDescription {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .jobDescription .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #007bff;
+  }
+  
+  .jobDescription h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .applyButton {
+    background-color: rgb(9, 9, 10);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .applyButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .jobDescription p {
+    margin: 10px 0;
+  }
+  
+  @media (max-width: 425px) {
+    .header {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .header {
+      width: 65%;
+      margin-right: 200px;
+    }
+    .applyButton{
+      margin-left:40px
+    }
+  }
