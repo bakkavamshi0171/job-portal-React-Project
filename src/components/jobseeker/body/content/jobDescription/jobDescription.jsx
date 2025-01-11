@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db, ref, get } from "../../../../../firebase/firebaseconfig";
 import "./jobDescription.css";
+import FooterComp from "../../../../hiringPartner/dashborad/footer";
+import Header from "../../../header/header";
 
 const JobDescription = () => {
   const [jobDetails, setJobDetails] = useState(null);
@@ -27,6 +29,8 @@ const JobDescription = () => {
   }
 
   return (
+    <>
+    <Header/>
     <div className="jobDescription">
       <div className="header">
         <h1>{jobDetails.jobTitle}</h1>
@@ -51,6 +55,8 @@ const JobDescription = () => {
         <p><strong>Skills:</strong> {jobDetails.skills}</p>
       </div>
     </div>
+    <FooterComp/>
+    </>
   );
 };
 

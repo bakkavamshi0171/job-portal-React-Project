@@ -31,7 +31,6 @@ const LoginPage = () => {
       [name]: value,
     }));
   };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -57,6 +56,7 @@ const LoginPage = () => {
           setPersonDetails(userProfile);
           setLoginalert(true);
           navigate("/home");
+
         } else {
           setLoginmsg(true);
         }

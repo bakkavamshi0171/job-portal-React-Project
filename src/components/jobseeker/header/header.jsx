@@ -11,7 +11,7 @@ import axios from "axios";
 import "./Header.css";
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
   const [userImage, setUserImage] = useState(null); // State for uploaded image
@@ -21,7 +21,7 @@ function Header() {
     const fetchUserDetails = async () => {
       try {
         const loginDetailsUrl =
-          "https://jobseeker-application-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
+          "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
         const loginResponse = await axios.get(loginDetailsUrl);
         const loginDetails = Object.values(loginResponse.data || {});
         const lastLogin = loginDetails[loginDetails.length - 1];
@@ -29,7 +29,7 @@ function Header() {
 
         if (email) {
           const databaseUrl =
-            "https://jobseeker-application-default-rtdb.firebaseio.com/jobSeekers.json";
+            "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobseeker.json";
           const response = await axios.get(databaseUrl);
           const seekers = Object.values(response.data || {});
           const user = seekers.find((user) => user.email === email);
@@ -100,7 +100,7 @@ function Header() {
             Profile
           </li>
           <li
-            className="item2"
+            className="item1"
             onClick={() => {
               navigate("/jobseeker/home/appliedjobs");
             }}

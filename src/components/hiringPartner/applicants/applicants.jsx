@@ -14,26 +14,36 @@ import {
 import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 import NavbarComp from "../dashborad/navbar";
 import FooterComp from "../dashborad/footer";
-import "./applicants.css"
+import "./applicants.css";
 
 const ApplicantsComp = () => {
   const [applicantsProfile, setApplicantsProfile] = useState([]);
   const [postingData, setPostingData] = useState([]);
   const [userName, setUserName] = useState("");
 
+  // Fetch data from Firebase
   useEffect(() => {
     const fetchingData = async () => {
       try {
         const applicantUrl =
-          "https://jobseeker-application-default-rtdb.firebaseio.com/formData.json";
+          "https://job-portal-fdc41-default-rtdb.firebaseio.com/formData.json";
         const response = await axios.get(applicantUrl);
+
+        // Map the data to include the unique keys as `id`
+        const applicants = Object.entries(response.data || {}).map(
+          ([key, value]) => ({
+            id: key, // Add the unique key as `id`
+            ...value,
+          })
+        );
+        setApplicantsProfile(applicants);
 
         const jobPostUrl =
           "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobpostingData.json";
         const jobPostingResponse = await axios.get(jobPostUrl);
 
-        setApplicantsProfile(Object.values(response.data || {}));
         setPostingData(Object.values(jobPostingResponse.data || {}));
+
         const userProfile = JSON.parse(localStorage.getItem("userProfile"));
         if (userProfile && userProfile.fullName) {
           setUserName(userProfile.fullName);
@@ -46,16 +56,27 @@ const ApplicantsComp = () => {
     fetchingData();
   }, []);
 
-  const updateStatus = async (jobId, applicantId, status) => {
+  // Update status of an applicant
+  const updateStatus = async (applicantId, status) => {
+    if (!applicantId) {
+      console.error("Invalid applicantId:", applicantId);
+      return;
+    }
+
     try {
-      const url = `https://jobseeker-application-default-rtdb.firebaseio.com/formData/${applicantId}.json`;
-      const response = await axios.patch(url, { status });
+      // Construct the correct URL for the applicant
+      const url = `https://job-portal-fdc41-default-rtdb.firebaseio.com/formData/${applicantId}.json`;
+
+      // Update the status in the database
+      const response = await axios.patch(url, { applicationstatus: status });
       console.log("Status updated successfully:", response.data);
 
-      // Update the UI
+      // Update the UI state
       setApplicantsProfile((prev) =>
         prev.map((applicant) =>
-          applicant.id === applicantId ? { ...applicant, status } : applicant
+          applicant.id === applicantId
+            ? { ...applicant, applicationstatus: status }
+            : applicant
         )
       );
     } catch (error) {
@@ -67,19 +88,7 @@ const ApplicantsComp = () => {
     console.log(`Email sent to: ${email}`);
   };
 
-  // const compared = useMemo(() => {
-  //   if (!postingData || !applicantsProfile) return [];
-
-  //   return postingData
-  //     .filter((job) => job.postedBy.toLowerCase() === userName.toLowerCase())
-  //     .map((job) => {
-  //       const matchedApplicants = applicantsProfile.filter(
-  //         (applicant) =>
-  //           job.jobTitle.toLowerCase() === applicant.jobTitle.toLowerCase()
-  //       );
-  //       return { ...job, applicants: matchedApplicants };
-  //     });
-  // }, [postingData, applicantsProfile, userName]);
+  // Compare job postings with applicants
   const compared = useMemo(() => {
     if (!postingData || !applicantsProfile) return [];
 
@@ -104,7 +113,7 @@ const ApplicantsComp = () => {
           ? { ...job, applicants: matchedApplicants }
           : null;
       })
-      .filter(Boolean); // Remove null entries
+      .filter(Boolean);
   }, [postingData, applicantsProfile, userName]);
 
   return (
@@ -112,13 +121,13 @@ const ApplicantsComp = () => {
       <NavbarComp />
       <div className="box-container">
         {compared.map((job) => (
-          <Card key={job.id} sx={{ marginBottom: "20px", borderRadius: "8px" }}>
+          <Card key={job} sx={{ marginBottom: "20px", borderRadius: "8px" }}>
             <CardContent>
               <Typography variant="h4" gutterBottom>
                 {job.jobTitle}
               </Typography>
               <Typography variant="h6" gutterBottom>
-                 {job.companyName}
+                {job.companyName}
               </Typography>
               <Typography variant="body1" gutterBottom>
                 {job.jobType || "Job Type Not Specified"}
@@ -157,7 +166,18 @@ const ApplicantsComp = () => {
                       </Typography>
 
                       <Typography variant="body2">
-                        Status: <strong  style={{color:`${applicant.status=="Accepted"?"green":"red"}`}}>{applicant.status || "Pending"}</strong>
+                        Status:{" "}
+                        <strong
+                          style={{
+                            color: `${
+                              applicant.applicationstatus === "Accepted"
+                                ? "green"
+                                : "red"
+                            }`,
+                          }}
+                        >
+                          {applicant.applicationstatus || "Pending"}
+                        </strong>
                       </Typography>
                       <Box>
                         <Button variant="contained" color="primary">
@@ -180,7 +200,7 @@ const ApplicantsComp = () => {
                             href={applicant.LinkedInURL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ textDecoration: "none", color: "white"}}
+                            style={{ textDecoration: "none", color: "white" }}
                           >
                             LinkedIn
                           </a>
@@ -196,22 +216,18 @@ const ApplicantsComp = () => {
                         <Button
                           variant="contained"
                           color="success"
-                          onClick={() =>
-                            updateStatus(job.id, applicant.id, "Accepted")
-                          }
+                          onClick={() => updateStatus(applicant.id, "Accepted")}
                         >
                           Accept
                         </Button>
                         <Button
                           variant="contained"
                           color="error"
-                          onClick={() =>
-                            updateStatus(job.id, applicant.id, "Rejected")
-                          }
-                          disabled={applicant.status === "Accepted"}
+                          onClick={() => updateStatus(applicant.id, "Rejected")}
+                          disabled={applicant.applicationstatus === "Accepted"}
                           sx={{
                             display:
-                              applicant.status === "Accepted"
+                              applicant.applicationstatus === "Accepted"
                                 ? "none"
                                 : "inline-block",
                           }}
@@ -229,9 +245,8 @@ const ApplicantsComp = () => {
                   </Card>
                 ))
               ) : (
-                <Typography variant="body2" style={{color:"white"}}>
+                <Typography variant="body2" style={{ color: "white" }}>
                   No applicants for this job yet.
-                  {console.log("no applicants")}
                 </Typography>
               )}
             </CardContent>
@@ -244,3 +259,4 @@ const ApplicantsComp = () => {
 };
 
 export default ApplicantsComp;
+

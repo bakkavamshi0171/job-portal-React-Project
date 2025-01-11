@@ -11,6 +11,8 @@ const JobSeekerLogin = () => {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    fullName:"",
+    mobileNumber:"",
   });
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -23,6 +25,78 @@ const JobSeekerLogin = () => {
     });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const user = await signInWithEmailAndPassword(
+  //       loginWithHp,
+  //       credentials.email,
+  //       credentials.password
+  //     );
+  
+  //     if (user) {
+  //       const dataUrl =
+  //         "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobseeker.json";
+  //       const response = await axios.get(dataUrl);
+  
+  //       if (!response.data) {
+  //         setError("No data found in the database.");
+  //         return;
+  //       }
+  
+  //       const userProfile = Object.values(response.data).find(
+  //         (profile) => profile.email === credentials.email
+  //       );
+  
+  //       if (userProfile) {
+  //         const seekers = Object.values(response.data || {});
+  //         const validUser = seekers.find(
+  //           (user) =>
+  //             user.email === credentials.email &&
+  //             user.password === credentials.password 
+  //         );
+
+  //         if (validUser ) {
+  //           const loginDetailsUrl =
+  //             "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
+  //           const loginResponse = await axios.get(loginDetailsUrl);
+  //           const loginDetails = loginResponse.data;
+  
+  //           if (loginDetails && Object.keys(loginDetails).length > 0) {
+  //             const existingKey = Object.keys(loginDetails)[0];
+  //             const updateUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails/${existingKey}.json`;
+  
+  //             await axios.put(updateUrl, {
+  //               email: credentials.email,
+  //               password: credentials.password,
+  //               fullName: credentials.fullName,
+  //               mobileNumber:credentials.mobileNumber,
+  //             });
+  //           } else {
+  //             await axios.post(loginDetailsUrl, {
+  //               email: credentials.email,
+  //               password: credentials.password,
+  //               fullName: credentials.fullName,
+  //               mobileNumber:credentials.mobileNumber,
+  //             });
+  //           }
+  
+  //           setShowAlert(true);
+  //           setTimeout(() => {
+  //             navigate("/job-seeker/home");
+  //           }, 1000);
+  //         } else {
+  //           setError("Invalid email or password");
+  //         }
+  //       } else {
+  //         setError("User profile not found.");
+  //       }
+  //     }
+  //   } catch (err) {
+  //     setError("Error logging in. Please try again.");
+  //     console.error("Error during login:", err.message, err.response?.data);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -42,46 +116,48 @@ const JobSeekerLogin = () => {
           return;
         }
   
+        // Find the user profile in the database
         const userProfile = Object.values(response.data).find(
           (profile) => profile.email === credentials.email
         );
   
         if (userProfile) {
-          const seekers = Object.values(response.data || {});
-          const validUser = seekers.find(
-            (user) =>
-              user.email === credentials.email &&
-              user.password === credentials.password
-          );
+          // Update the credentials state with the fetched profile
+          setCredentials({
+            email: userProfile.email,
+            password: credentials.password, // Keep the entered password
+            fullName: userProfile.fullName || "",
+            mobileNumber: userProfile.mobile || "",
+          });
   
-          if (validUser) {
-            const loginDetailsUrl =
-              "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
-            const loginResponse = await axios.get(loginDetailsUrl);
-            const loginDetails = loginResponse.data;
+          const loginDetailsUrl =
+            "https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails.json";
+          const loginResponse = await axios.get(loginDetailsUrl);
+          const loginDetails = loginResponse.data;
   
-            if (loginDetails && Object.keys(loginDetails).length > 0) {
-              const existingKey = Object.keys(loginDetails)[0];
-              const updateUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails/${existingKey}.json`;
+          if (loginDetails && Object.keys(loginDetails).length > 0) {
+            const existingKey = Object.keys(loginDetails)[0];
+            const updateUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/jobSeekerLoginDetails/${existingKey}.json`;
   
-              await axios.put(updateUrl, {
-                email: credentials.email,
-                password: credentials.password,
-              });
-            } else {
-              await axios.post(loginDetailsUrl, {
-                email: credentials.email,
-                password: credentials.password,
-              });
-            }
-  
-            setShowAlert(true);
-            setTimeout(() => {
-              navigate("/job-seeker/home");
-            }, 1000);
+            await axios.put(updateUrl, {
+              email: userProfile.email,
+              password: credentials.password,
+              fullName: userProfile.fullName,
+              mobileNumber: userProfile.mobile,
+            });
           } else {
-            setError("Invalid email or password");
+            await axios.post(loginDetailsUrl, {
+              email: userProfile.email,
+              password: credentials.password,
+              fullName: userProfile.fullName,
+              mobileNumber: userProfile.mobile,
+            });
           }
+  
+          setShowAlert(true);
+          setTimeout(() => {
+            navigate("/job-seeker/home");
+          }, 1000);
         } else {
           setError("User profile not found.");
         }
@@ -91,6 +167,7 @@ const JobSeekerLogin = () => {
       console.error("Error during login:", err.message, err.response?.data);
     }
   };
+  
   
   return (
     <div className="container">

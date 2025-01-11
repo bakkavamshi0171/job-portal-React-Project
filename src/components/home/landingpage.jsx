@@ -26,7 +26,7 @@ const LandingPage = () => {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1, padding: "0px 40px" }}>
             <WorkIcon fontSize="large" />
-            <Typography variant="h6">Job Portal</Typography>
+            <Typography variant="h5">Job Portal</Typography>
           </Box>
 
           <Typography variant="h6" sx={{ padding: "0px 40px" }}>
