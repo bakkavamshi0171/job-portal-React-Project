@@ -1,8 +1,10 @@
 .job-container2 {
     display: flex;
     flex-wrap: wrap; 
-    justify-content: center;
     padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
   }
   
   .job-card2 {
@@ -11,6 +13,7 @@
     margin: 10px;
     border-radius: 8px;
     color: black;
+    width: 65%;
   }
   
   .job-header2 {
@@ -56,4 +59,8 @@
     content: " - Applied";
     color: green;
   }
-  
+  @media (min-width:300px) and (max-width:768px) {
+    .job-card2{
+      width:90%
+    }
+  }

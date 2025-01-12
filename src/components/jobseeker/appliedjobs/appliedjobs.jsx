@@ -43,17 +43,18 @@ const AppliedJobs = () => {
       .filter(Boolean);
     setMatchedData(matched);
   }, [jobSeekerLoginDetails, formData]);
-  
 
   const handleDeleteJob = async (jobKey) => {
     try {
-      const deleteUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/${jobKey}.json`;
+      const deleteUrl = `https://job-portal-fdc41-default-rtdb.firebaseio.com/formData/${jobKey}.json`;
       await axios.delete(deleteUrl);
       setFormData((prevData) => prevData.filter((data) => data.key !== jobKey));
       message.success("Job application withdrawn successfully!");
     } catch (error) {
       console.error("Error withdrawing job application:", error);
-      message.error("Failed to withdraw the job application. Please try again.");
+      message.error(
+        "Failed to withdraw the job application. Please try again."
+      );
     }
   };
 
@@ -125,7 +126,11 @@ const AppliedJobs = () => {
                       fontWeight: "bold",
                     }}
                   >
-                     {job.applicationstatus}, Congratulations your applicaation has been Proceeded further by company
+                    {job.applicationstatus === "Accepted"
+                      ? `${job.applicationstatus} Congratulations Your application has been move further in the hiring process`
+                      : job.applicationstatus === "Rejected"
+                      ? `${job.applicationstatus} Sorry We Can't move you further in the hiring process`
+                      : "Your Application is still in pending State"}
                   </span>
                 </p>
               )}

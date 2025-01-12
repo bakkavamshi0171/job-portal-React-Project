@@ -108,7 +108,7 @@ const JobPosts = () => {
         <div className="search-inputs">
           <input
             type="text"
-            className="search-bar"
+            className="search-bar2"
             placeholder="Search by job title..."
             name="jobTitle"
             value={filters.jobTitle}
@@ -116,7 +116,7 @@ const JobPosts = () => {
           />
           <input
             type="text"
-            className="search-bar"
+            className="search-bar22"
             placeholder="Search by company name..."
             name="companyName"
             value={filters.companyName}
@@ -124,7 +124,7 @@ const JobPosts = () => {
           />
           <input
             type="text"
-            className="search-bar"
+            className="search-bar2"
             placeholder="Search by location..."
             name="location"
             value={filters.location}
@@ -132,7 +132,7 @@ const JobPosts = () => {
           />
           <input
             type="date"
-            className="search-bar"
+            className="search-bar2"
             placeholder="Search by date..."
             name="date"
             value={filters.date}
@@ -140,7 +140,7 @@ const JobPosts = () => {
           />
           <input
             type="text"
-            className="search-bar"
+            className="search-bar2"
             placeholder="Search by skills..."
             name="skills"
             value={filters.skills}

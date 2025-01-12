@@ -154,6 +154,7 @@ export default function JobPostingForm() {
   return (
     <>
       <NavbarComp />
+      
       <div style={{ backgroundColor: "rgb(2, 73, 108)", padding: "40px" }}>
         <FormContainer>
           <Title>Job Posting Form</Title>

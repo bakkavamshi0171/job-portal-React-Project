@@ -15,10 +15,10 @@ export default function MainComp() {
   const progressPercent = (applications / maxApplications) * 100;
 
   const dataset = [
-    { jobPost: "Software Engineer", applications: 5, hired: 2 },
-    { jobPost: "Data Scientist", applications: 3, hired: 1 },
-    { jobPost: "Product Manager", applications: 7, hired: 3 },
-    { jobPost: "UI/UX Designer", applications: 4, hired: 1 },
+    { jobPost: "Front-end Developer", applications: 5, hired: 2 },
+    { jobPost: "Devops", applications: 3, hired: 1 },
+    { jobPost: "Business Manager", applications: 7, hired: 3 },
+    { jobPost: "Backend Dev", applications: 4, hired: 1 },
     { jobPost: "Full Stack Developer", applications: 6, hired: 2 },
   ];
 
