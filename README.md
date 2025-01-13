@@ -9,33 +9,26 @@ Profile Management: Update and manage personal information, resumes, and prefere
 Job Search: Advanced search options to filter jobs based on location, job type, and industry.
 Apply for Jobs: Easy application process with one-click functionality.
 Saved Jobs: Bookmark jobs for later review.
+
+
 For Hiring Managers:
 Authentication: Secure login for hiring partners.
 Post Job Listings: Add, update, and manage job vacancies.
 View Applications: Access applicant profiles and resumes.
 Manage Listings: Edit or remove job postings as needed.
+
 General Features:
 Responsive Design: Optimized for both desktop and mobile devices.
 Real-Time Database: All data is stored and retrieved dynamically using Firebase Realtime Database.
 Role-Based Access: Separate functionalities and views for job seekers and hiring managers.
+
+
 💻 Technologies Used
 Frontend: React.js, Material-UI for UI components and styling.
 Backend: Firebase Realtime Database for data storage and Firebase Authentication for user management.
 Deployment: Firebase Hosting for seamless deployment.
-📂 Folder Structure
-php
 
-job-portal/
-├── src/
-│   ├── components/        # Reusable components
-│   ├── pages/             # Pages for job seekers and hiring managers
-│   ├── services/          # API calls and Firebase configuration
-│   ├── styles/            # Custom styles
-│   └── App.js             # Main application file
-├── public/
-│   └── index.html         # HTML template
-├── package.json           # Dependencies and scripts
-└── README.md              # Project documentation
+
 🚀 Getting Started
 Prerequisites
 Node.js installed on your system.
