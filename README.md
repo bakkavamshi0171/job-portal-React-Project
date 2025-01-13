@@ -1,4 +1,7 @@
 Job Portal Website
+
+
+
 📖 Overview
 The Job Portal Website is a modern and responsive web application built using React.js and Firebase. It serves as a comprehensive platform that connects job seekers and hiring managers, enabling seamless job applications and recruitment processes. The platform offers a user-friendly interface with features tailored for both job seekers and hiring partners.
 
