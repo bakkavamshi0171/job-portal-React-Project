@@ -21,6 +21,9 @@ import JobDescription from "../jobseeker/body/content/jobDescription/jobDescript
 import SubmitDetails from "../jobseeker/body/content/jobDescription/submitDetails/submitDetails";
 import JbProfilePage from "../jobseeker/profilepage/jbprofilepage";
 import AppliedJobs from "../jobseeker/appliedjobs/appliedjobs";
+import GuestPage from "../guestlogin/guest";
+import HiringManagerGuestLogin from "../guestlogin/hiringpartnerguestlogin";
+import JobSeekerGuestLogin from "../guestlogin/jobseekerguestlogin";
 
 export default function Routings() {
   return (
@@ -67,6 +70,10 @@ export default function Routings() {
             <Route path="/submit-details" element={<SubmitDetails />} />
             <Route path="/job-seeker/home/profile" element={<JbProfilePage />} />
             <Route path="/jobseeker/home/appliedjobs" element={<AppliedJobs />} />
+            <Route path="/guest/login" element={<GuestPage/>}/>
+            <Route path="/hiringpartner/guestlogin" element={<HiringManagerGuestLogin/>}/>
+            <Route path="/jobseeker/guestlogin" element={<JobSeekerGuestLogin/>}/>
+
 
 
           </Routes>

@@ -4,6 +4,7 @@ import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
 import BusinessIcon from "@mui/icons-material/Business";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
+import LoginIcon from "@mui/icons-material/Login";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,14 @@ const LandingPage = () => {
       {/* Navbar */}
       <AppBar position="static" sx={{ backgroundColor: "rgb(41, 132, 222)" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1, padding: "0px 40px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              padding: "0px 40px",
+            }}
+          >
             <WorkIcon fontSize="large" />
             <Typography variant="h5">Job Portal</Typography>
           </Box>
@@ -42,7 +50,7 @@ const LandingPage = () => {
           alignItems: "center",
           flex: 1,
           padding: "20px",
-          flexDirection: { xs: "column", sm: "row" }, 
+          flexDirection: { xs: "column", sm: "row" },
         }}
       >
         <Box
@@ -91,7 +99,7 @@ const LandingPage = () => {
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            alignItems: { xs: "center", sm: "flex-start" }, 
+            alignItems: { xs: "center", sm: "flex-start" },
           }}
         >
           <Button
@@ -103,7 +111,7 @@ const LandingPage = () => {
               alignItems: "center",
               padding: 2,
               color: "#ffffff",
-              width:"200px",
+              width: "200px",
               backgroundColor: "rgba(25, 118, 210, 0.8)",
               "&:hover": {
                 backgroundColor: "#ffffff",
@@ -123,7 +131,7 @@ const LandingPage = () => {
               alignItems: "center",
               padding: 2,
               color: "#ffffff",
-              width:"200px",
+              width: "200px",
               backgroundColor: "rgba(25, 118, 210, 0.8)",
               "&:hover": {
                 backgroundColor: "#ffffff",
@@ -133,6 +141,28 @@ const LandingPage = () => {
           >
             <PersonIcon fontSize="large" sx={{ marginBottom: 1 }} />
             Job Seeker
+          </Button>
+
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => navigate("/guest/login")}
+            sx={{
+              flexDirection: "column",
+              alignItems: "center",
+              padding: 2,
+              color: "#ffffff",
+              width: "200px",
+              backgroundColor: "rgba(25, 118, 210, 0.8)",
+              "&:hover": {
+                backgroundColor: "#ffffff",
+                color: "#1976d2",
+              },
+            }}
+          >
+            <LoginIcon fontSize="large" sx={{ marginBottom: 1 }} />{" "}
+            {/* Updated Icon */}
+            Guest Login
           </Button>
         </Box>
       </Box>
@@ -162,4 +192,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
