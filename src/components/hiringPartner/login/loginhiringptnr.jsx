@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Box, TextField, Button, Typography, Paper, Alert } from "@mui/material";
 import axios from "axios";
 import { Logindetails } from "./personData";
+import "../signup/signuppage.css"
 
 export const userDetails = createContext();
 
@@ -80,6 +81,7 @@ const LoginPage = () => {
   return (
     <userDetails.Provider value={profile}>
       <Box
+
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -87,6 +89,7 @@ const LoginPage = () => {
           minHeight: "100vh",
           background: "linear-gradient(135deg, #1976d2, rgb(8, 64, 160))",
           padding: 2,
+          
         }}
       >
         <Paper
@@ -98,6 +101,8 @@ const LoginPage = () => {
             textAlign: "center",
             borderRadius: 3,
             backgroundColor: "rgba(255, 255, 255, 0.9)",
+            border:"2px solid yellow",
+          animation :"borderPulse 3s infinite"
           }}
         >
           <Typography

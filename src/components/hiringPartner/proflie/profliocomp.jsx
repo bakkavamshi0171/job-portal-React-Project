@@ -6,6 +6,7 @@ import { userDetails as UserDetailsContext } from "../login/loginhiringptnr";
 import "./ProfilePage.css"; 
 import NavbarComp from "../dashborad/navbar";
 import FooterComp from "../dashborad/footer";
+import { useNavigate } from "react-router";
 
 
 function ProfilePage() {
@@ -22,7 +23,7 @@ function ProfilePage() {
 
   const [profilePic, setProfilePic] = useState(null);
   const [previewPic, setPreviewPic] = useState(userContext?.profilePic || "");
-  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
   const userId = userContext?.id || "";
 
 
@@ -59,17 +60,6 @@ function ProfilePage() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const docRef = doc(db, "users", userId);
-      await updateDoc(docRef, userDetails); 
-      setIsEditing(false);
-      await handleProfilePicUpload();
-    } catch (error) {
-      console.error("Error updating user details:", error);
-    }
-  };
 
   return (
     <>
@@ -96,7 +86,7 @@ function ProfilePage() {
         </div>
 
         
-        <form className="profile-form" onSubmit={handleSubmit}>
+        <form className="profile-form" >
           <div className="form-group">
             <label>Name:</label>
             <input
@@ -104,7 +94,7 @@ function ProfilePage() {
               name="fullName"
               value={userDetails.fullName}
               onChange={handleChange}
-              disabled={!isEditing}
+              
             />
           </div>
           <div className="form-group">
@@ -114,7 +104,7 @@ function ProfilePage() {
               name="email"
               value={userDetails.email}
               onChange={handleChange}
-              disabled={!isEditing}
+              
             />
           </div>
           <div className="form-group">
@@ -124,7 +114,7 @@ function ProfilePage() {
               name="mobileNumber"
               value={userDetails.mobileNumber}
               onChange={handleChange}
-              disabled={!isEditing}
+              
             />
           </div>
           <div className="form-group">
@@ -134,7 +124,6 @@ function ProfilePage() {
               name="role"
               value={userDetails.role}
               onChange={handleChange}
-              disabled={!isEditing}
             />
           </div>
           <div className="form-group">
@@ -144,22 +133,18 @@ function ProfilePage() {
               name="company"
               value={userDetails.company}
               onChange={handleChange}
-              disabled={!isEditing}
+              
             />
           </div>
-          {isEditing ? (
-            <button type="submit" className="save-btn">
-              Save Changes
-            </button>
-          ) : (
+          
             <button
               type="button"
               className="edit-btn"
-              onClick={() => setIsEditing(true)}
+              onClick={() => navigate(-1)}
             >
-              Edit Profile
+              Go Back
             </button>
-          )}
+
         </form>
       </div>
     </div>

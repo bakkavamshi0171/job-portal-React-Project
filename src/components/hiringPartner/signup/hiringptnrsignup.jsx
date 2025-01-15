@@ -12,6 +12,7 @@ import {
   Link,
   Alert,
 } from "@mui/material";
+import "./signuppage.css"
 
 const HiringPartnerSignup = () => {
   const signUpForm = getAuth(app);
@@ -91,9 +92,18 @@ const HiringPartnerSignup = () => {
           textAlign: "center",
           borderRadius: 3,
           backgroundColor: "rgba(255, 255, 255, 0.8)",
+          border:"2px solid yellow",
+          animation :"borderPulse 3s infinite"
         }}
       >
-        <Typography variant="h5" sx={{ marginBottom: 3 }}>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            color: "#1976d2",
+            marginBottom: 2,
+          }}
+        >
           Hiring Partner Signup
         </Typography>
 
